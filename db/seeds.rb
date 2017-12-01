@@ -19,8 +19,8 @@ happy_words = ["captivated",
             ]
 
 boots = ["Jenna",
-        "Livy",
-        "Shann",
+        "Olivia",
+        "Shannon",
         "Kenn",
         "Loraine",
         "Ally",
@@ -43,7 +43,7 @@ boots = ["Jenna",
         "Mark"
       ]
 
-boots.each do |boot|
-  Boot.create!(name: boot.chomp)
+boots.each_with_index do |boot, i|
+  Boot.create!(name: boot.chomp, password: "password", email: "boot#{i}@boot.com")
   puts "#{boot.chomp} will be #{happy_words.sample}!"
 end
