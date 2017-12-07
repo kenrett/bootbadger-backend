@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     @boot = Boot.find(session_params[:email])
 
     if @boot && @boot.password == session_params[:password]
-      render json: {boot: @boot}
+      render json: @boot
     else
       @errors = ["Boot not found."]
       render json: @errors

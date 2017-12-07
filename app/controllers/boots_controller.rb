@@ -9,7 +9,7 @@ class BootsController < ApplicationController
     @boot = Boot.new(boot_params)
 
     if @boot.save
-      render json: {boot: @boot}
+      render json: @boot
     else
       @errors = @boot.errors.full_messages
       render json: @errors
