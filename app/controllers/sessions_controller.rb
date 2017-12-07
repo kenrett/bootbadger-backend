@@ -4,16 +4,13 @@ class SessionsController < ApplicationController
     @boot = Boot.find(session_params[:email])
 
     if @boot && @boot.password == session_params[:password]
-      payload = {boot: @boot}
-      token = JWT.encode(payload, @boot.password_digest, 'none') 
-      # JWT.decode(token, @boot.password_digest, false)
-      render json: {token: token}
+      render json: {boot: @boot}
     else
       @errors = ["Boot not found."]
       render json: @errors
     end
   end
-    
+
   def destroy
     render json: {token: null}
   end
