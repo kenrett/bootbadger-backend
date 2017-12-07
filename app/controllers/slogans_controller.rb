@@ -1,12 +1,12 @@
 class SlogansController < ApplicationController
 
   def create
-    @user = User.find(params[:boot_id])
-    @submitted_by = User.find_by_token(slogan_params['token'])
-    if @user
-      @slogan = @user.slogans.new(body: slogan_params['body'], submitted_by: @submitted_by.name)
+    @boot = boot.find(params[:boot_id])
+    @submitted_by = boot.find_by_token(slogan_params['token'])
+    if @boot && @submitted_by
+      @slogan = @boot.slogans.new(body: slogan_params['body'], submitted_by: @submitted_by.name)
       if @slogan.save
-        render json: @user
+        render json: @boot
       else
         render json: @slogan.errors
       end
