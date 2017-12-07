@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def create
-    @boot = Boot.find(session_params[:email])
+    @boot = Boot.find_by(email: session_params[:email])
 
     if @boot && @boot.password == session_params[:password]
       render json: @boot
