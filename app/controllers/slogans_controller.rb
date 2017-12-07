@@ -20,7 +20,7 @@ class SlogansController < ApplicationController
   private
 
   def slogan_params
-    params.require(:slogan).permit(:token, :body, :submitted_by)
+    params.require(:slogan).permit(:token, :body)
   end
 
 end
