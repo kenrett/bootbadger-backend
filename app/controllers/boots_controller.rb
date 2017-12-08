@@ -6,7 +6,7 @@ class BootsController < ApplicationController
   end
 
   def create
-    @boot = Boot.includes(:slogans, :votes).includes(:votes).find_by_name('Hunter')
+    @boot = Boot.includes(:slogans, :votes).includes(:votes).find_by_name(boot_params['name'])
     @boot.email = boot_params['email']
     @boot.password = boot_params['password']
 
