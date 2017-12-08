@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
 
   def create
-    @submitted_by = Boot.find_by_token(params['token'])
+    @submitted_by = Boot.find_by_token(vote_params['token'])
     @boot = Boot.find(params[:boot_id])
     @slogan = Slogan.find(params[:slogan_id])
     if @submitted_by && @boot && @slogan
@@ -12,6 +12,11 @@ class VotesController < ApplicationController
         eap @vote.errors
         render json: @vote.errors
       end
+    else
+      p "* " * 90
+      eap @submitted_by
+      eap @boot
+      eap @slogan
     end
 
   end
