@@ -23,8 +23,8 @@ class VotesController < ApplicationController
 
   def update
     @submitted_by = Boot.find_by_token(vote_params['token'])
-    @vote = Vote.find_by(boot_id: @submitted_by.id, slogan_id: params[:slogan_id])
-    @vote.destory
+    @slogan = Slogan.find(params[:slogan_id])
+    @submitted_by.votes.delete(@slogan)
     status 200
   end
 
