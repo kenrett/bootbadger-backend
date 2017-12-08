@@ -24,10 +24,13 @@ class VotesController < ApplicationController
   def update
     @submitted_by = Boot.find_by_token(vote_params['token'])
     @slogan = Slogan.find(params[:slogan_id])
-    @vote = Vote.find_by(boot_id: @submitted_by.id, slogan_id: @slogan.id)
-    eap @vote
-    @vote.destroy
-    render json: @slogan
+    @vote = Vote.where(boot_id: @submitted_by.id, slogan_id: @slogan.id).first
+    if @vote
+      @vote.destroy
+      render json: @slogan
+    else
+      status 422
+    end
   end
 
   private
