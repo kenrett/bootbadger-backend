@@ -1,19 +1,26 @@
 class SessionsController < ApplicationController
 
-  def create
-    @boot = Boot.find(session_params[:email])
+  def list
+    @boots = Boot.where(password_digest: nil)
+    render json: @boots
+  end
 
-    if @boot && @boot.password == session_params[:password]
-      payload = {boot: @boot}
-      token = JWT.encode(payload, @boot.password_digest, 'none') 
-      # JWT.decode(token, @boot.password_digest, false)
-      render json: {token: token}
+
+  def create
+    @boot = Boot.find_by(email: session_params['email'])
+    eap session_params
+    eap session_params['email']
+    eap session_params['password']
+    eap @boot
+    if @boot && @boot.authenticate(session_params['password'])
+      eap
+      render json: @boot
     else
       @errors = ["Boot not found."]
-      render json: @errors
+      render json: @errors, status: 422
     end
   end
-    
+
   def destroy
     render json: {token: null}
   end

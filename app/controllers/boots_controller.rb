@@ -1,26 +1,24 @@
 class BootsController < ApplicationController
 
   def index
-    @boots = Boot.all
-
+    @boots = Boot.all.includes(:slogans, :votes)
     render json: @boots
   end
 
   def create
-    @boot = Boot.new(boot_params)
+    @boot = Boot.includes(:slogans, :votes).includes(:votes).find_by_name(boot_params['name'])
+    @boot.email = boot_params['email']
+    @boot.password = boot_params['password']
 
     if @boot.save
-      payload = {boot: @boot}
-      token = JWT.encode(payload, @boot.password_digest, 'none') 
-      # JWT.decode(token, @boot.password_digest, false)
-      render json: {token: token}
+      render json: @boot
     else
       @errors = @boot.errors.full_messages
-      render json: @errors
+      render json: @errors, status: 422
     end
   end
 
-  private 
+  private
 
   def boot_params
     params.require(:boot).permit(:name, :email, :password)
