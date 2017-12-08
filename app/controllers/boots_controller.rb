@@ -6,7 +6,9 @@ class BootsController < ApplicationController
   end
 
   def create
-    @boot = Boot.new(boot_params)
+    @boot = Boot.find_by_name(boot_params['name'])
+    @boot.email = boot_params['email']
+    @boot.password = boot_params['password']
 
     if @boot.save
       render json: @boot

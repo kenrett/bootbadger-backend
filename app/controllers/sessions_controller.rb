@@ -1,5 +1,11 @@
 class SessionsController < ApplicationController
 
+  def list
+    @boots = Boot.where(password_digest: nil)
+    render json: @boots
+  end
+
+
   def create
     @boot = Boot.find_by(email: session_params[:email])
 
