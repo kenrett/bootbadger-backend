@@ -2,7 +2,7 @@ Boot.destroy_all
 
 boots = {"Jenna" => 'https://dbc-backoffice-production.s3.amazonaws.com/profile_images/5687.jpeg',
         "Olivia" => 'https://avatars7.githubusercontent.com/u/30182438?v=4',
-        "Shannon" => 'https://avatars5.githubusercontent.com/u/30235739?v=4',
+        "Shannon" => 'https://avatars3.githubusercontent.com/u/30235739?s=460&v=4',
         "Kenn" => 'https://avatars3.githubusercontent.com/u/7684289?v=3',
         "Lorraine" => 'https://dbc-backoffice-production.s3.amazonaws.com/profile_images/5922.jpeg',
         "Ally" => 'https://avatars0.githubusercontent.com/u/19180733?s=460&v=4',
