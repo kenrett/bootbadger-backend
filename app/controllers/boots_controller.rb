@@ -14,7 +14,7 @@ class BootsController < ApplicationController
       render json: @boot
     else
       @errors = @boot.errors.full_messages
-      render json: @errors
+      render json: @errors, status: 422
     end
   end
 
