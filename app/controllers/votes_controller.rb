@@ -13,11 +13,14 @@ class VotesController < ApplicationController
         render json: @vote.errors
       end
     else
-      p "* " * 90
-      eap @submitted_by
-      eap @boot
-      eap @slogan
-      status 422
+      # p "* " * 90
+      # eap @submitted_by
+      # eap @boot
+      # eap @slogan
+      render json: {
+        error: 'Auth Failed',
+        status: 400
+      }, status: 400
     end
   end
 
@@ -29,7 +32,10 @@ class VotesController < ApplicationController
       @vote.destroy
       render json: @slogan
     else
-      status 422
+      render json: {
+        error: 'Cannot Down Vote Again',
+        status: 400
+      }, status: 400
     end
   end
 
