@@ -19,7 +19,7 @@ boots = {"Jenna" => 'https://dbc-backoffice-production.s3.amazonaws.com/profile_
         "Josh" => 'https://avatars1.githubusercontent.com/u/4044653?v=3',
         "Dillon" => 'https://dbc-backoffice-production.s3.amazonaws.com/profile_images/5354.jpeg',
         "Joe" => 'https://avatars2.githubusercontent.com/u/21271209?v=3',
-        "Roger" => '',
+        "Roger" => 'https://avatars2.githubusercontent.com/u/21122570?s=460&v=4',
         "Rebekah" => 'https://i.imgur.com/VouiqPp.jpg',
         "Ken" => 'https://avatars.githubusercontent.com/u/2986627?v=3',
         "Mark" => 'https://avatars.githubusercontent.com/u/856491?v=3'
