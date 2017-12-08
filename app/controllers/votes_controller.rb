@@ -9,9 +9,16 @@ class VotesController < ApplicationController
       if @vote.save
         render json: @slogan
       else
+        eap @vote.errors
         render json: @vote.errors
       end
+    else
+      p "* " * 90
+      eap @submitted_by
+      eap @boot
+      eap @slogan
     end
+
   end
 
   private
