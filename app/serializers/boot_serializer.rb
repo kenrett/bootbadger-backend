@@ -3,6 +3,6 @@ class BootSerializer < ActiveModel::Serializer
   has_many :slogans
 
   def slogans
-    object.slogans.order(:total_votes)
+    object.slogans.to_a.sort_by(&:total_votes)
   end
 end
