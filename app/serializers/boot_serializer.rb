@@ -3,6 +3,6 @@ class BootSerializer < ActiveModel::Serializer
   has_many :slogans
 
   def slogans
-    object.slogans.to_a.sort_by(&:total_votes).reverse[0..1]
+    object.slogans.to_a.sort_by(&:total_votes).reverse
   end
 end
