@@ -26,7 +26,7 @@ class VotesController < ApplicationController
     @slogan = Slogan.find(params[:slogan_id])
     @vote = Vote.find_by(boot_id: @submitted_by.id, slogan_id: @slogan.id)
     eap @vote
-    @submitted_by.votes.delete(@vote)
+    @vote.destroy
     render json: @slogan
   end
 
