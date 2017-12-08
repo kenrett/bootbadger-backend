@@ -17,8 +17,15 @@ class VotesController < ApplicationController
       eap @submitted_by
       eap @boot
       eap @slogan
+      status 422
     end
+  end
 
+  def update
+    @submitted_by = Boot.find_by_token(vote_params['token'])
+    @vote.find(boot_id: @submitted_by.id, slogan_id: params[:slogan_id])
+    @vote.destory
+    status 200
   end
 
   private
