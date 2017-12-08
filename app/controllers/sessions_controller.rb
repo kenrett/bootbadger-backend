@@ -8,9 +8,12 @@ class SessionsController < ApplicationController
 
   def create
     @boot = Boot.find_by(email: session_params['email'])
-    eap session
+    eap session_params
+    eap session_params['email']
+    eap session_params['password']
     eap @boot
     if @boot && @boot.password == session_params['password']
+      eap
       render json: @boot
     else
       @errors = ["Boot not found."]
