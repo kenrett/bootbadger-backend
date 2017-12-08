@@ -5,6 +5,7 @@ class Boot < ApplicationRecord
   has_secure_password validations: false
 
   after_create :gen_token
+
   validates :name, presence: true, uniqueness: true
 
   def gen_token

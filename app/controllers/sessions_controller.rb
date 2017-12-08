@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     eap session_params['email']
     eap session_params['password']
     eap @boot
-    if @boot && @boot.password == session_params['password']
+    if @boot && @boot.authenticate(session_params['password'])
       eap
       render json: @boot
     else
