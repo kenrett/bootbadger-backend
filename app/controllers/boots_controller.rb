@@ -1,12 +1,12 @@
 class BootsController < ApplicationController
 
   def index
-    @boots = Boot.all.includes(:slogans).includes(:votes)
+    @boots = Boot.all.includes(:slogans, :votes)
     render json: @boots
   end
 
   def create
-    @boot = Boot.find_by_name(boot_params['name'])
+    @boot = Boot.includes(:slogans, :votes).includes(:votes).find_by_name('Hunter')
     @boot.email = boot_params['email']
     @boot.password = boot_params['password']
 
