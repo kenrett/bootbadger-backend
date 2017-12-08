@@ -1,5 +1,5 @@
 class BootSerializer < ActiveModel::Serializer
-  attributes :id, :token, :name, :email
+  attributes :id, :token, :name, :email, :img_url
   has_many :slogans
 
   def slogans
