@@ -5,6 +5,7 @@ class VotesController < ApplicationController
     @submitted_by = Boot.find_by_token(params[:token])
     @slogan = Slogan.find(params[:slogan_id])
     @vote = @slogan.votes.create(boot_id: @submitted_by.id)
+    render json: @slogan
   end
 
   private
