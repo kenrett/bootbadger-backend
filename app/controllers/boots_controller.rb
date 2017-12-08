@@ -1,7 +1,7 @@
 class BootsController < ApplicationController
 
   def index
-    @boots = Boot.all
+    @boots = Boot.all.includes(:slogans).includes(:votes)
     render json: @boots
   end
 
