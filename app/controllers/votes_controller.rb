@@ -27,7 +27,7 @@ class VotesController < ApplicationController
     @vote = Vote.find_by(boot_id: @submitted_by.id, slogan_id: @slogan.id)
     eap @vote
     @submitted_by.votes.delete(@vote)
-    status 200
+    render json: @slogan
   end
 
   private
