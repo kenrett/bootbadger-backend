@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       render json: @boot
     else
       @errors = ["Boot not found."]
-      render json: @errors
+      render json: @errors, status: 422
     end
   end
 
